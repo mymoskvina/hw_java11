@@ -49,8 +49,8 @@ class StatsServiceTest {
 
         // Доходы по месяцам
         long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
-        int expected = 1;
-        int actual = (int) service.calculateMonthMin(purchases)+1;
+        int expected = 9;
+        int actual = (int) service.calculateMonthMin(purchases) + 1;
 
         //Проверка, сравнение результата
         assertEquals(expected, actual);
@@ -63,6 +63,18 @@ class StatsServiceTest {
         long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
         int expected = 5;
         int actual = (int) service.calculateMonthsBelowAverage(purchases);
+
+        //Проверка, сравнение результата
+        assertEquals(expected, actual);
+    }
+    @Test
+    void calculateMonthAboveAverage() {
+        StatsService service = new StatsService();
+
+        // Доходы по месяцам
+        long[] purchases = {8, 15, 13, 15, 17, 20, 19, 20, 7, 14, 14, 18};
+        int expected = 5;
+        int actual = (int) service.calculateMonthsAboveAverage(purchases);
 
         //Проверка, сравнение результата
         assertEquals(expected, actual);

@@ -15,7 +15,7 @@ public class StatsService {
         // начинаем с нуля
         for (long purchase : purchases) {
             // каждый раз прибавляем к текущей сумме новый элемент
-            sum = sum + purchase;
+            sum = calculateSum(purchases);
         }
         return sum / purchases.length;
     }
@@ -34,7 +34,7 @@ public class StatsService {
     //Вычислить номер месяца с минимальной выручкой
     public long calculateMonthMin(long[] purchases) {
         int monthIdx = 0;
-        long min = 0;
+        long min = purchases[0];
         for (int i = 0; i < purchases.length; i++) {
             if (purchases[i] < min) {
                 monthIdx = i;
@@ -54,7 +54,7 @@ public class StatsService {
         }
         return monthCount;
     }
-    //Вычислить номер месяца с выручкой dsit среднего значения по месяцам
+    //Вычислить номер месяца с выручкой выше среднего значения по месяцам
     public long calculateMonthsAboveAverage(long[] purchases) {
         int monthCount = 0;
         long average = calculateAverage(purchases);
