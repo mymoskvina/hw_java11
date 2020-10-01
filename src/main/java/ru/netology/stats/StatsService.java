@@ -10,15 +10,13 @@ public class StatsService {
         }
         return sum;
     }
+
+    //Вычислить среднюю выручку
     public long calculateAverage(long[] purchases) {
-        long sum = 0;
-        // начинаем с нуля
-        for (long purchase : purchases) {
-            // каждый раз прибавляем к текущей сумме новый элемент
-            sum = calculateSum(purchases);
-        }
+        long sum = calculateSum(purchases);
         return sum / purchases.length;
     }
+
     //Вычислить номер месяца с максимальной выручкой
     public long calculateMonthMax(long[] purchases) {
         int monthIdx = 0;
@@ -31,18 +29,20 @@ public class StatsService {
         }
         return monthIdx;
     }
+
     //Вычислить номер месяца с минимальной выручкой
     public long calculateMonthMin(long[] purchases) {
         int monthIdx = 0;
         long min = purchases[0];
         for (int i = 0; i < purchases.length; i++) {
-            if (purchases[i] < min) {
+            if (purchases[i] <= min) {
                 monthIdx = i;
                 min = purchases[i];
             }
         }
         return monthIdx;
     }
+
     //Вычислить номер месяца с выручкой ниже среднего значения по месяцам
     public long calculateMonthsBelowAverage(long[] purchases) {
         int monthCount = 0;
@@ -54,6 +54,7 @@ public class StatsService {
         }
         return monthCount;
     }
+
     //Вычислить номер месяца с выручкой выше среднего значения по месяцам
     public long calculateMonthsAboveAverage(long[] purchases) {
         int monthCount = 0;
